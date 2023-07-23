@@ -1,3 +1,11 @@
+//first check if the list is decreasing ?
+//if it is continuously decreasing-> swap all the elements from start to end until start<end by increasing start and decreasing end
+//find the first non decreasing position from the end -> i
+//get the position from the end (i.e, j), where the value is greater than permutation[i]
+//now swap both i and j, and break from the loop as traversing is no longer required
+//now reverse all the elements of permutation from i+1 to last element of the permutation.
+
+
 import java.util.* ;
 import java.io.*; 
 import java.util.ArrayList;
