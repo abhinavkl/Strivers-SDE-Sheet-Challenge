@@ -1,0 +1,55 @@
+import java.util.* ;
+import java.io.*; 
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class Solution 
+{
+	static void reverse(ArrayList<Integer> list,int start,int end){
+		while(start<end){
+			int from=list.get(start);
+			int to=list.get(end);
+			list.set(start, to);
+			list.set(end, from);
+			start++;end--;
+		}
+	}
+	static void swap(ArrayList<Integer> list,int from,int to){
+		int fromValue=list.get(from);
+		int toValue=list.get(to);
+		list.set(to,fromValue);
+		list.set(from,toValue);		
+	}
+	public static ArrayList<Integer> nextPermutation(ArrayList<Integer> permutation) 
+	{
+		// Write your code here.
+		int len=permutation.size();
+		boolean isdecreasing=true;
+		for(int i=1;i<len;i++){
+			if(permutation.get(i-1)<permutation.get(i))
+			{
+				isdecreasing=false;
+				break;
+			}
+		}
+		if(isdecreasing){
+			reverse(permutation,0,len-1);
+			return permutation;
+		}
+		else{
+			int i=0;
+			for(i=len-2;i>=0;i--){
+				if(permutation.get(i)<permutation.get(i+1))
+					break;
+			}
+			for(int j=len-1;j>i;j--){
+				if(permutation.get(j)>permutation.get(i)){
+					swap(permutation,i,j);
+					break;
+				}
+			}
+			reverse(permutation,i+1,len-1);
+			return permutation;
+		}
+	}
+}
