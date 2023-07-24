@@ -1,0 +1,36 @@
+
+here,
+first we are calculating xor of all elements,
+and those two numbers which are unique will differ on atleast one bit.
+so, all those duplicate will make the xor = 0, so xor is result of first^second.
+so as to find first and second, we take the first differing bit, and partition all the numbers based on if it is 0 or 1.
+so as everything is repeating, first will store the first non repeating and second will store second non repeating.
+
+static int rightMostBitIndex(int n){
+		int count=0;
+		while(n>0){
+		  	if((n&1) > 0){
+				  break;
+		    }
+        count++;
+        n=n>>1;
+		}
+		return count;
+}
+
+static int[] getDuplicateElements(int[] arr){
+		int first=0;
+		int second=0;
+		int xor=0;
+		for(int a : arr){
+			xor^=a;
+		}		
+		int rightBit=rightMostBitIndex(xor);
+		for(int a : arr){
+			if( (a & (1<<rightBit)) ==0 )
+				first^=a;
+			else 
+				second^=a;
+		}		
+		return new int[]{first,second};
+}
