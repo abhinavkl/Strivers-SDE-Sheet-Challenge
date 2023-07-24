@@ -1,0 +1,12 @@
+
+here what we are doing is, 
+every two adjacent numbers will have one bit difference, so whenever we xor both of them one 1 will become zero. In the same way all one's will become zero 
+in the count of 1 steps, we don't have to iterate through the length of the number.
+
+
+int count=0;
+while(number!=0){
+    number= number & number-1;
+    count++;
+}
+return count;
