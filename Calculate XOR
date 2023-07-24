@@ -1,0 +1,17 @@
+public class Solution {
+	public static int calculateXOR(int n) {
+		// Write your code here.
+		int rem=(n%4);
+		switch(rem){
+			case 0:
+				return n;
+			case 1:
+				return 1;
+			case 2:
+				return n+1;
+			case 3:
+				return 0;
+		}
+		return 0;
+	}
+}
